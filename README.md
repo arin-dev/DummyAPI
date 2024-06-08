@@ -50,7 +50,7 @@ This endpoint returns the details of a specific user based on their role and use
 
 **Example:**
 
-Request: `GET https://crewbotdummy.vercel.app/user?role=Producer&userId=user1`
+Request: `GET https://crewbotdummy.vercel.app/user?role=Producer&userId=michael.johnson@gmail.com`
 
 Response:
 ```json
