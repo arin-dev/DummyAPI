@@ -26,13 +26,17 @@ app.get('/CrewBot', (req, res) => {
   const numEntries = parseInt(req.query.numEntries);
   const randomEntries = [];
 
+  let roleEntries = {};
   for(let i = 0; i < numEntries; i++) {
     const randomRole = uniqueRoles[Math.floor(Math.random() * uniqueRoles.length)];
     const roleData = data[randomRole];
     const randomEntry = roleData[Math.floor(Math.random() * roleData.length)];
-    randomEntries.push(randomEntry);
+    if (!roleEntries[randomRole]) {
+      roleEntries[randomRole] = [];
+    }
+    roleEntries[randomRole].push(randomEntry);
   }
-
+  randomEntries = roleEntries;
   res.json(randomEntries);
 });
 
