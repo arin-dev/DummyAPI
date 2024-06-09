@@ -1,24 +1,7 @@
 const express = require('express');
 const app = express();
 
-uniqueRoles = [
-    'Producer',
-    'Director',
-    'Technical Director',
-    'Camera Operator',
-    'Sound Engineer',
-    'Lighting Technician',
-    'Graphics Operator',
-    'Streaming Technician',
-    'Floor Manager',
-    'Teleprompter Operator',
-    'IT Support',
-    'Logistics Coordinator',
-    'Talent/Host',
-    'Makeup Artist and Hair Stylist',
-    'Venue Coordinator',
-    'Time Zone Manager'
-]
+uniqueRoles = ['Producer', 'Director', 'Technical Director', 'Camera Operator', 'Sound Engineer', 'Lighting Technician', 'Graphics Operator', 'Streaming Technician', 'Floor Manager', 'Teleprompter Operator', 'IT Support', 'Logistics Coordinator', 'Talent/Host', 'Makeup Artist and Hair Stylist', 'Venue Coordinator', 'Time Zone Manager'];
 
 const data = require('./RoleWiseCrewData.json');
 
@@ -26,13 +9,15 @@ app.get('/CrewBot', (req, res) => {
   const numEntries = parseInt(req.query.numEntries);
   const randomEntries = [];
 
-  for(let i = 0; i < numEntries; i++) {
-    const randomRole = uniqueRoles[Math.floor(Math.random() * uniqueRoles.length)];
-    const roleData = data[randomRole];
-    const randomEntry = roleData[Math.floor(Math.random() * roleData.length)];
-    randomEntries.push(randomEntry);
+  for (let role of uniqueRoles) {
+    let RoleEntries = []
+    const roleData = data[role];
+    for(let i = 0; i < numEntries; i++) {
+      const RoleEntry = roleData[Math.floor(Math.random() * roleData.length)];
+      RoleEntries.push(RoleEntry);
+    }
+    randomEntries.push({[role]:RoleEntries});
   }
-
   res.json(randomEntries);
 });
 
@@ -62,3 +47,8 @@ app.get('/user', (req, res) => {
 });
 
 module.exports = app;
+
+// const port = process.env.PORT || 3000;
+// app.listen(port, () => {
+//   console.log(`Server is running on port ${port}`);
+// });
