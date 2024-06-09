@@ -13,7 +13,15 @@ app.get('/CrewBot', (req, res) => {
     let RoleEntries = []
     const roleData = data[role];
     for(let i = 0; i < numEntries; i++) {
-      const RoleEntry = roleData[Math.floor(Math.random() * roleData.length)];
+      const TempEntry = roleData[Math.floor(Math.random() * roleData.length)];
+      RoleEntry = {
+        name: TempEntry.name,
+        yoe: TempEntry.yoe,
+        minRatePerDay: TempEntry.minRatePerDay,
+        maxRatePerDay: TempEntry.maxRatePerDay,
+        location: TempEntry.location,
+        preferred_because : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, pulvinar facilisis justo mollis, auctor consequat urna. Morbi a bibendum metus. Donec scelerisque sollicitudin enim eu venenatis. Duis tincidunt laoreet ex, in pretium orci vestibulum eget."
+      }
       RoleEntries.push(RoleEntry);
     }
     randomEntries.push({[role]:RoleEntries});

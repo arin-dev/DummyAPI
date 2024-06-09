@@ -29,12 +29,27 @@ Request: `GET https://crewbotdummy.vercel.app/CrewBot?numEntries=5`
 Response:
 ```json
 [
-  {
-    "userid": "user1",
-    "role": "Producer",
-    "name": "John Doe"
-  },
-  ...
+
+{
+  "Producer": [
+            {
+                "name": "Wei Zhang",
+                "yoe": 8,
+                "minRatePerDay": 700,
+                "maxRatePerDay": 1050,
+                "location": "Dubai",
+                "preferred_because": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, pulvinar facilisis justo mollis, auctor consequat urna. Morbi a bibendum metus. Donec scelerisque sollicitudin enim eu venenatis. Duis tincidunt laoreet ex, in pretium orci vestibulum eget."
+            },
+            {
+                "name": "Michael Johnson",
+                "yoe": 12,
+                "minRatePerDay": 800,
+                "maxRatePerDay": 1200,
+                "location": "Dubai",
+                "preferred_because": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros, pulvinar facilisis justo mollis, auctor consequat urna. Morbi a bibendum metus. Donec scelerisque sollicitudin enim eu venenatis. Duis tincidunt laoreet ex, in pretium orci vestibulum eget."
+            }
+        ]
+}
 ]
 ```
 
@@ -55,9 +70,28 @@ Request: `GET https://crewbotdummy.vercel.app/user?role=Producer&userId=michael.
 Response:
 ```json
 {
-  "userid": "user1",
-  "role": "Producer",
-  "name": "John Doe"
+    "name": "Michael Johnson",
+    "userid": "michael.johnson@gmail.com",
+    "crewType": "Film Crew",
+    "roleJobTitle": "Producer",
+    "services": [
+        "Production Management",
+        "Budgeting"
+    ],
+    "tags": [
+        "Film",
+        "Production",
+        "Budgeting"
+    ],
+    "expertise": [
+        "Project Management",
+        "Budgeting",
+        "Scheduling"
+    ],
+    "yoe": 12,
+    "minRatePerDay": 800,
+    "maxRatePerDay": 1200,
+    "location": "Dubai"
 }
 ```
 
@@ -70,4 +104,4 @@ Response:
 
 ### Data
 
-The data for the API is stored in `RoleWiseCrewData.json`. Each role has an array of users, and each user has a `userid`, `role`, and `name`.
+The data for the API is stored in `RoleWiseCrewData.json`. Each role is represented as a key in the JSON object, with its value being an array of users. Each user object includes properties such as `userid`, `name`, `crewType`, `roleJobTitle`, `services`, `tags`, `expertise`, `yoe`, `minRatePerDay`, `maxRatePerDay`, and `location`.
